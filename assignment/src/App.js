@@ -1,25 +1,27 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import UserOutput from "./UserOutput/UserOutput";
 import UserInput from "./UserInput/UserInput";
 
-function App() {
-  const [usernameState, setUsernameState] = useState({
+class App extends Component {
+  state = {
     username: "Abdullatif Jamous"
-  });
+  };
 
-  const changeUserNameHandler = event => {
-    setUsernameState({
+  changeUserNameHandler = event => {
+    this.setState({
       username: event.target.value
     });
   };
 
-  return (
-    <div className="App">
-      <UserOutput username={usernameState.username} />
-      <UserInput click={changeUserNameHandler} />
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <UserOutput username={this.state.username} />
+        <UserInput click={this.changeUserNameHandler} />
+      </div>
+    );
+  }
 }
 
 export default App;
